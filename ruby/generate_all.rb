@@ -1,0 +1,6 @@
+require_relative 'generate_live_mutant_table.rb'
+require_relative 'generate_mutant_totals_tables.rb'
+require_relative 'generate_mutation_score_tables.rb'
+require_relative 'generate_mutation_time_tables.rb'
+require_relative 'generate_stillborn_mutant_time_tables.rb'
+require_relative 'generate_test_suite_factors_table.rb'
