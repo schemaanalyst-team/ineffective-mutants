@@ -139,11 +139,11 @@ end
 
 def path_to_data_dir(file)
   current_directory = File.dirname(__FILE__)
-  "#{current_directory}/../../../transformed-files/#{file}"
+  "#{current_directory}/../../raw-data/#{file}"
 end
 
 def path_to_generated_data_dir(file)
-  "/Users/phil/Repos/SchemaAnalyst/papers/ineffective-mutants/tables/generated-data/#{file}"
+  "./#{file}"
 end
 
 def unique_column_values(csv_file, position)

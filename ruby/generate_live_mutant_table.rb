@@ -1,6 +1,7 @@
 require_relative 'include/live_mutant_data_files'
 
 file_name = 'live-mutants-summary.tex'
+puts path_to_generated_data_dir(file_name)
 file = File.open(path_to_generated_data_dir(file_name), 'w')
 
 lmdf = LiveMutantDataFiles.new
