@@ -1,3 +1,19 @@
+goback <- ".."
+forwardslash <- "/"
+datadir <- "raw-data"
+
+analyse_pipeline_file <- "analyse-pipeline.dat"
+hypersql_avmdefaults_file <- "hypersql-avmdefaults.dat"
+hypersql_ineffective_mutants_file <- "hypersql-ineffective-mutants.dat"
+hypersql_random_file <- "hypersql-random.dat"
+postgres_avmdefaults_file <- "postgres-avmdefaults.dat"
+postgres_ineffective_mutants_file <- "postgres-ineffective-mutants.dat"
+postgres_random_file <- "postgres-random.dat"
+sqlite_avmdefaults_file <- "sqlite-avmdefaults.dat"
+sqlite_ineffective_mutants_file <- "sqlite-ineffective-mutants.dat"
+sqlite_random_file <- "sqlite-random.dat"
+
+  # f <- paste(goback, datadir, postgres_random_file, sep=forwardslash)
 #' FUNCTION: read_analyse_pipeline
 #' READ THE DATA FOR THE MUTATION ANALYSIS PIPELINE
 #'
@@ -10,7 +26,10 @@
 #' @export
 
 read_analyse_pipeline <- function() {
-  f <- system.file("extdata", "analyse-pipeline.dat", package="ineffectivemutants")
+
+  # This way of defining a file path will not work anymore because the data will not be included in the R package
+  # f <- system.file("extdata", "analyse-pipeline.dat", package="ineffectivemutants")
+  f <- paste(goback, goback, datadir, analyse_pipeline_file, sep=forwardslash)
   d <- readr::read_csv(f)
   return(dplyr::tbl_df(d))
 }
@@ -25,7 +44,8 @@ read_analyse_pipeline <- function() {
 #' @export
 
 read_hypersql_avmdefaults <- function() {
-  f <- system.file("extdata", "hypersql-avmdefaults.dat", package="ineffectivemutants")
+  # f <- system.file("extdata", "hypersql-avmdefaults.dat", package="ineffectivemutants")
+  f <- paste(goback, goback, datadir, hypersql_avmdefaults_file, sep=forwardslash)
   d <- readr::read_csv(f)
   return(dplyr::tbl_df(d))
 }
@@ -39,7 +59,8 @@ read_hypersql_avmdefaults <- function() {
 #' @export
 
 read_hypersql_random <- function() {
-  f <- system.file("extdata", "hypersql-random.dat", package="ineffectivemutants")
+  # f <- system.file("extdata", "hypersql-random.dat", package="ineffectivemutants")
+  f <- paste(goback, goback, datadir, hypersql_random_file, sep=forwardslash)
   d <- readr::read_csv(f)
   return(dplyr::tbl_df(d))
 }
@@ -53,7 +74,8 @@ read_hypersql_random <- function() {
 #' @export
 
 read_postgres_avmdefaults <- function() {
-  f <- system.file("extdata", "postgres-avmdefaults.dat", package="ineffectivemutants")
+  # f <- system.file("extdata", "postgres-avmdefaults.dat", package="ineffectivemutants")
+  f <- paste(goback, goback, datadir, postgres_avmdefaults_file, sep=forwardslash)
   d <- readr::read_csv(f)
   return(dplyr::tbl_df(d))
 }
@@ -67,8 +89,8 @@ read_postgres_avmdefaults <- function() {
 #' @export
 
 read_postgres_random <- function() {
-  # f <- paste(goback, datadir, postgres_random_file, sep=forwardslash)
-  f <- system.file("extdata", "postgres-random.dat", package="ineffectivemutants")
+  # f <- system.file("extdata", "postgres-random.dat", package="ineffectivemutants")
+  f <- paste(goback, goback, datadir, postgres_random_file, sep=forwardslash)
   d <- readr::read_csv(f)
   return(dplyr::tbl_df(d))
 }
@@ -82,7 +104,8 @@ read_postgres_random <- function() {
 #' @export
 
 read_sqlite_avmdefaults <- function() {
-  f <- system.file("extdata", "sqlite-avmdefaults.dat", package="ineffectivemutants")
+  # f <- system.file("extdata", "sqlite-avmdefaults.dat", package="ineffectivemutants")
+  f <- paste(goback, goback, datadir, sqlite_avmdefaults_file, sep=forwardslash)
   d <- readr::read_csv(f)
   return(dplyr::tbl_df(d))
 }
@@ -96,7 +119,8 @@ read_sqlite_avmdefaults <- function() {
 #' @export
 
 read_sqlite_random <- function() {
-  f <- system.file("extdata", "sqlite-random.dat", package="ineffectivemutants")
+  # f <- system.file("extdata", "sqlite-random.dat", package="ineffectivemutants")
+  f <- paste(goback, goback, datadir, sqlite_random_file, sep=forwardslash)
   d <- readr::read_csv(f)
   return(dplyr::tbl_df(d))
 }
@@ -139,7 +163,8 @@ read_strict_random <- function() {
 #' @export
 
 read_sqlite_ineffective <- function() {
-  f <- system.file("extdata", "sqlite-ineffective-mutants.dat", package="ineffectivemutants")
+  # f <- system.file("extdata", "sqlite-ineffective-mutants.dat", package="ineffectivemutants")
+  f <- paste(goback, goback, datadir, sqlite_ineffective_mutants_file, sep=forwardslash)
   d <- readr::read_csv(f)
   return(dplyr::tbl_df(d))
 }
