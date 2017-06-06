@@ -86,8 +86,7 @@ end
 rows = rows.sort
 cols = cols.sort
 
-table = ''
-
+table = '%'
 table += ' & '
 cols.each do |col|
   table += ' & '
@@ -95,7 +94,7 @@ cols.each do |col|
 end
 table += '\\\\'
 table += "\n"
-table += "\\hline\n"
+
 rows.each do |row|
   dbmses.each_with_index do |dbms, i|
     table += row if i == 1
@@ -107,9 +106,9 @@ rows.each do |row|
       table += find_total(data_points, dbms, row, col)
     end
     table += '\\\\'
-    table += "\n\\hline"
     table += "\n"
   end
+  table += "\\hline\n"
 end
 
 file = File.open(path_to_generated_data_dir('redundant-mutant-pairs.tex'), 'w')
