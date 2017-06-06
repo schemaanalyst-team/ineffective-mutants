@@ -1,0 +1,19 @@
+-- 21
+-- PKCColumnE
+-- ListElementExchanger with ChainedSupplier with PrimaryKeyConstraintSupplier and PrimaryKeyColumnsWithAlternativesSupplier - Exchanged LASTNAME with AGE
+
+CREATE TABLE "LONG_NAMED_PEOPLE" (
+	"FIRSTNAME"	VARCHAR(373),
+	"LASTNAME"	VARCHAR(373),
+	"AGE"	INT,
+	PRIMARY KEY ("FIRSTNAME", "AGE")
+)
+
+CREATE TABLE "ORDERS" (
+	"FIRSTNAME"	VARCHAR(373),
+	"LASTNAME"	VARCHAR(373),
+	"TITLE"	VARCHAR(80),
+	"COST"	NUMERIC(5, 2),
+	FOREIGN KEY ("FIRSTNAME", "LASTNAME") REFERENCES "LONG_NAMED_PEOPLE" ("FIRSTNAME", "LASTNAME")
+)
+

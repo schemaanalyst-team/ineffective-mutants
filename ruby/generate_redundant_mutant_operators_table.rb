@@ -16,23 +16,35 @@ def lookup_operator(dbms, schema, descriptor)
     end
     return 'MUTANT-DID-NOT-EXIST'
   else
-    puts "#{dbms} #{schema}"
     return 'MUTANTS-DO-NOT-EXIST'
   end
 end
 
-def process_schema(dbms, schema, lines)
+data_points = []
+
+def process_schema(dbms, schema, lines, data_points)
   total = 0
   list = lines.split(/\n/)
   list.each_with_index do |line, i|
     if line == 'FINE: Redundant mutant pair:'
       operator1 = lookup_operator(dbms, schema, list[i+1])
       operator2 = lookup_operator(dbms, schema, list[i+2])
-      total += 1      
-      #puts "#{dbms}, #{schema}, #{operator1}, #{operator2}"    
+      total += 1
+      data_points << [dbms, operator1, operator2]
+      #puts "#{dbms}, #{schema}, #{operator1}, #{operator2}"
     end
   end
   #puts "#{dbms}, #{schema}, #{total}"
+end
+
+def find_total(data_points, dbms, operator1, operator2)
+  total = 0
+  data_points.each do |data_point|
+    if data_point[0] == dbms && data_point[1] == operator1 && data_point[2] == operator2
+      total += 1
+    end
+  end
+  return total.to_s
 end
 
 # get data
@@ -43,11 +55,11 @@ dbmses.each do |dbms|
     current_lines = ''
     file.each do |line|
       if line.start_with?("#{dbms},1,")
-        process_schema(dbms, current_schema, current_lines) unless current_schema == ''
+        process_schema(dbms, current_schema, current_lines, data_points) unless current_schema == ''
         current_schema = line.partition("#{dbms},1,").last.strip
         current_lines = ''
       elsif line.start_with?("#{dbms},2,")
-        process_schema(dbms, current_schema, current_lines) unless current_schema == ''
+        process_schema(dbms, current_schema, current_lines, data_points) unless current_schema == ''
         break
       else
         current_lines += line
@@ -55,4 +67,53 @@ dbmses.each do |dbms|
     end
   end
 end
+
+
+
+rows = []
+cols = []
+
+data_points.each do |data_point|
+  operator = data_point[1]
+  rows << operator unless rows.include?(operator)
+end
+
+data_points.each do |data_point|
+  operator = data_point[2]
+  cols << operator unless cols.include?(operator)
+end
+
+rows = rows.sort
+cols = cols.sort
+
+table = ''
+
+table += ' & '
+cols.each do |col|
+  table += ' & '
+  table += col
+end
+table += '\\\\'
+table += "\n"
+table += "\\hline\n"
+rows.each do |row|
+  dbmses.each_with_index do |dbms, i|
+    table += row if i == 1
+    table += ' & '
+    table += dbms[0]
+
+    cols.each do |col|
+      table += ' & '
+      table += find_total(data_points, dbms, row, col)
+    end
+    table += '\\\\'
+    table += "\n\\hline"
+    table += "\n"
+  end
+end
+
+file = File.open(path_to_generated_data_dir('redundant-mutant-pairs.tex'), 'w')
+output(file, table)
+file.close
+
 
