@@ -7,15 +7,17 @@ def get_data_for_element(element, dbms, produced, quasi, impaired, equivalent, r
   line = element + ' '
   line = ' ' * line.length unless dbms == 'Postgres'
 
-    line += "& " + dbms[0,1] + " "
-    line += "& #{produced} "
-    line += "& #{quasi} "
-    line += "& #{impaired} "
-    line += "& #{equivalent} "
+  line += "& " + dbms[0,1] + " "
+  line += "& #{produced} "
+  line += "& #{quasi} "
+  line += "& #{impaired} "
+  line += "& #{equivalent} "
   line += "& #{redundant} "
 
   effective = produced - quasi - impaired - equivalent - redundant
+  ineffective = produced - effective
 
+  line += "& #{ineffective} "
   line += "& #{effective} "
 
   reduction = f1dp(percen(produced-effective, produced))
@@ -80,20 +82,20 @@ def generate_table(elements, file_name, elements_per_line)
       hhline += '~' unless hhline == ''
 
       if subelement.nil?
-        hhline += '~~~~~~~~~'
+        hhline += '~~~~~~~~~~'
       else
-        hhline += '---------'
+        hhline += '----------'
       end
     end
 
     output(file, "\\hhline{#{hhline}}\n")
   end
 
-  hhline = ('~~~~~~~~~~' * (elements_per_line-1)) + '---------'
+  hhline = ('~~~~~~~~~~~' * (elements_per_line-1)) + '----------'
   output(file, "\\hhline{#{hhline}}\n")
 
   dbmses.each do |dbms|
-    line = '\multicolumn{10}{c}{} & ' * (elements_per_line - 1)
+    line = '\multicolumn{11}{c}{} & ' * (elements_per_line - 1)
     line += get_data_for_element('Total', dbms, total_produced[dbms],
           total_quasi[dbms], total_impaired[dbms],
           total_equivalent[dbms], total_redundant[dbms])
@@ -105,10 +107,10 @@ end
 
 puts "Writing mutants for individual schemas ..."
 schemas_per_line = 2
-#generate_table(group_array(schemas, schemas_per_line), 'mutants-by-schema.tex', schemas_per_line)
+generate_table(group_array(schemas, schemas_per_line), 'mutants-by-schema.tex', schemas_per_line)
 
 puts "Writing mutants for individual operators..."
-operators_per_line = 2
+operators_per_line = 1
 generate_table(group_array(operators, operators_per_line), 'mutants-by-operator.tex', operators_per_line)
 
 
