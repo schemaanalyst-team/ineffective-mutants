@@ -62,7 +62,7 @@ dbmses.each do |dbms|
     Mode::modes.each do |mode|
 
       if mode == Mode::MINUS_I && (dbms == 'HyperSQL' || dbms == 'Postgres')
-        line += "& & & "
+        line += "& \\multicolumn{1}{c}{-} & \\multicolumn{1}{c}{-} & "
         next
       end
 
