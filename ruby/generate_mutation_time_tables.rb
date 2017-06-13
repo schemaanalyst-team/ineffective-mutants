@@ -11,16 +11,17 @@ def ftimes(times, compare_times = nil)
     sig = wilcox_test(times, compare_times)
     if !sig[:p_value].nil? && sig[:p_value] < 0.01
       markup = ''
-      markup = 'bf' if sig[:side] == 1
-      markup = 'it' if sig[:side] == 2
+      markup = '$\APLup$' if sig[:side] == 1
+      markup = '$\APLdown$' if sig[:side] == 2
 
       a12 = a12_test(times, compare_times)
       stars = ''
-      stars = '***' if a12[:size] == 'large'
-      stars = '**' if a12[:size] == 'medium'
-      stars = '*' if a12[:size] == 'small'
+      stars = '$\star$' if a12[:size] == 'large'
+      #stars = '***' if a12[:size] == 'large'
+      #stars = '**' if a12[:size] == 'medium'
+      #stars = '*' if a12[:size] == 'small'
 
-      formatted_mean_time = "{\\" + markup + " " + stars + " #{formatted_mean_time}}"
+      formatted_mean_time = stars + " " + markup + " #{formatted_mean_time}"
     end
   end
 
@@ -103,4 +104,4 @@ data_generators.each do |data_generator|
   generate_table(data_generator)
 end
 
-generate_summary_table
+#generate_summary_table

@@ -70,7 +70,7 @@ lmdf.live_mutant_schemas.each do |schema|
   output(file, line)
 end
 
-line = "\\hline\n"
+line = "\\midrule\n"
 output(file, line)
 
 line = 'Total '
@@ -94,7 +94,7 @@ line += "& #{total_s} "
 line += "\\\\\n"
 output(file, line)
 
-line = "\\hline\n"
+line = "\\midrule\n"
 output(file, line)
 
 line = "\\end{tabular}"

@@ -46,6 +46,8 @@ def generate_table(elements, file_name, elements_per_line)
     total_redundant[dbms] = 0
   end
 
+  cols = 9
+
   elements.each do |element|
     dbmses.each do |dbms|
       line = ''
@@ -76,23 +78,18 @@ def generate_table(elements, file_name, elements_per_line)
       output(file, line)
     end
 
-    hhline = ''
+    line = ''
+    first = 0
+    last = cols
+
     element.each do |subelement|
-
-      hhline += '~' unless hhline == ''
-
-      if subelement.nil?
-        hhline += '~~~~~~~~~~'
-      else
-        hhline += '----------'
-      end
+      last = first + cols
+      line += "\\cmidrule{#{first}-#{last}} " unless subelement.nil?
+      first += cols + 3
     end
 
-    output(file, "\\hhline{#{hhline}}\n")
+    output(file, line + "\n")
   end
-
-  hhline = ('~~~~~~~~~~~' * (elements_per_line-1)) + '----------'
-  output(file, "\\hhline{#{hhline}}\n")
 
   dbmses.each do |dbms|
     line = '\multicolumn{11}{c}{} & ' * (elements_per_line - 1)

@@ -54,7 +54,7 @@ dbmses.each do |dbms|
       unless mode == Mode::ALL
 
         if mode == Mode::MINUS_I && (dbms == 'HyperSQL' || dbms == 'Postgres')
-          line += "& & &"
+          line += "& & "
           next
         end
 

@@ -108,7 +108,7 @@ rows.each do |row|
     table += '\\\\'
     table += "\n"
   end
-  table += "\\hline\n"
+  table += "\\midrule\n"
 end
 
 file = File.open(path_to_generated_data_dir('redundant-mutant-pairs.tex'), 'w')
