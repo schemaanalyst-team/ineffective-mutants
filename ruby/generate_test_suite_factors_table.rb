@@ -11,7 +11,7 @@ schemas.each do |schema|
   line = "#{latex_name(schema)} "
 
   dbmses.each do |dbms|
-    data_generators.each do |data_generator|
+    data_generators.reverse_each do |data_generator|
       stats = of.get_coverage_and_test_suite_size(schema, dbms, data_generator)
 
       coverage = f1dp(mean(stats[:coverage]))

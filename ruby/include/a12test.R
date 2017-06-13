@@ -1,5 +1,8 @@
 a.test <- function(sample1, sample2) {
 
+  #transformed_sample1 <- round(sample1/100)
+  #transformed_sample2 <- round(sample2/100)
+
   transformed_sample1 <- round(sample1/100)
   transformed_sample2 <- round(sample2/100)
 

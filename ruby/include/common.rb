@@ -37,7 +37,7 @@ def dbmses
 end
 
 def num_dbmses
-  get_dbmses.length
+  dbmses.length
 end
 
 def schemas
