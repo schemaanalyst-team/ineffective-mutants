@@ -11,8 +11,8 @@ def ftimes(times, compare_times = nil)
     sig = wilcox_test(times, compare_times)
     if !sig[:p_value].nil? && sig[:p_value] < 0.01
       markup = ''
-      markup = '$\APLup$' if sig[:side] == 1
-      markup = '$\APLdown$' if sig[:side] == 2
+      markup = '$\APLdown$' if sig[:side] == 1
+      markup = '$\APLup$' if sig[:side] == 2
 
       a12 = a12_test(times, compare_times)
       stars = ''

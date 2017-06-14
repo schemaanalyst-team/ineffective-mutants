@@ -25,3 +25,7 @@ def fmutscore(scores)
   #return "#{mean_score} & (#{mean_numerator}/#{mean_denominator})"
   mean_score
 end
+
+def frawmutscore(scores)
+  sprintf('%.1f', (mean(scores) * 100))
+end

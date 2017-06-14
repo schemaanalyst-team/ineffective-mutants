@@ -87,6 +87,14 @@ class MutationAnalysisDataFile
     return scores
   end
 
+  def raw_mutation_scores(schema, mode)
+    raw_mutation_scores = []
+    mutation_scores(schema, mode).each do |score|
+      raw_mutation_scores << score[:score]
+    end
+    raw_mutation_scores
+  end
+
   def mutation_times(schema, mode)
     times = []
     current_run = ''

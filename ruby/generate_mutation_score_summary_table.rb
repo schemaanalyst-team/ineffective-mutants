@@ -3,47 +3,48 @@ require_relative 'include/formatting'
 require_relative 'include/r'
 require_relative 'include/mutation_analysis_data_file'
 
-def mean_mutuation_score(scores)
-  decimal_scores = []
-
-  scores.each do |score|
-    decimal_scores << score[:score]
-  end
-
-  mean(decimal_scores)
-end
-
 def schemas_compare(dbms, data_generator, madf, mode, last_mode)
   decrease = 0
   increase = 0
+  decrease_large = 0
+  increase_large = 0
   adequate = 0
 
   schemas.each do |schema|
-    scores = madf.mutation_scores(schema, mode)
-    last_scores = madf.mutation_scores(schema, last_mode) unless last_mode.nil?
+    scores = madf.raw_mutation_scores(schema, mode)
+    last_scores = madf.raw_mutation_scores(schema, last_mode) unless last_mode.nil?
+
+    adequate +=1 if mean(scores) == 1.0
 
     unless (last_mode.nil? || scores.length == last_scores.length)
       abort("* ERROR: scores arrays not equal in length")
     end
 
-    mean_this = mean_mutuation_score(scores)
-    mean_last = mean_mutuation_score(last_scores) unless last_mode.nil?
+    unless last_mode.nil?
+      sig = wilcox_test(scores, last_scores)
+      a12 = a12_test(scores, last_scores)
 
-    adequate +=1 if mean_this == 1.0
-    increase +=1 if mean_this > mean_last unless last_mode.nil?
-    decrease +=1 if mean_this < mean_last unless last_mode.nil?
+      if !sig[:p_value].nil? && sig[:p_value] < 0.01
+        if sig[:side] == 1
+          decrease += 1
+          decrease_large +=1 if a12[:size] == 'large'
+        end
+        if sig[:side] == 2
+          increase += 1
+          increase_large +=1 if a12[:size] == 'large'
+        end
+      end
+    end
 
+    puts "#{data_generator} #{mode} #{last_mode} #{dbms} #{schema} #{mode} #{last_mode} #{decrease} #{decrease_large} #{increase} #{increase_large}"
     puts "#{data_generator} #{mode} #{last_mode} #{dbms} #{schema} #{mode} #{last_mode} #{adequate}"
   end
 
-  decrease_percen = f1dp(percen(decrease, num_schemas))
-  increase_percen = f1dp(percen(increase, num_schemas))
   adequate_percen = f1dp(percen(adequate, num_schemas))
 
   data = ""
-  #data += "#{decrease} (#{decrease_percen}) & #{increase} (#{increase_percen}) & "  unless last_mode.nil?
-  data += "#{decrease} & #{increase} & "  unless last_mode.nil?
-  data += "#{adequate} (#{adequate_percen}) "
+  data = "#{decrease} (#{decrease_large}) & #{increase} (#{increase_large}) & " unless last_mode.nil?
+  data += "#{adequate} (#{adequate_percen}\\%) "
 
   return data
 end
