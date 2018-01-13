@@ -9,7 +9,7 @@ Kapfhammer](http://www.cs.allegheny.edu/sites/gkapfham/). When possible, these
 authors will update this repository with additional details. For now, the
 remainder of this documentation furnishes an overview of the key scripts.
 
-## Details about the Ruby Scripts
+## Creating Data Tables with the Ruby Scripts
 
 These Ruby scripts were developed on MacOS, tested on Ubuntu 16.04, and run with
 the `ruby 2.3.1p112 (2016-04-26) [x86_64-linux-gnu]` version of Ruby. The script
