@@ -46,6 +46,21 @@ generate_all.rb`. Here are some more details about these scripts:
 - `generate_live_mutant_table.rb`: Generates the table showing the remaining
   live mutants by schema and operator.
 
+## Additional Scripts and Data Files
+
+The `r/R` directory contains scripts, written in the R language for statistical
+computation, that we used to verify the results produced by the Ruby scripts.
+Additionally, the `r/graphics` directory contains the PDFs of graphs that we
+used to verify the results presented in the paper's tables. Ultimately, we
+determined that the tables furnished a more compact and useful representation of
+the data and thus we opted not to include them in the published paper. Finally,
+the `raw-data` directory contains all of the `.dat` files that contain the raw
+data resulting from running the experiments.
+
+## Manually Generated Test Suites
+
+
+
 ## Problems or Praise
 
 If you have any problems with replicating the experimental results in this
