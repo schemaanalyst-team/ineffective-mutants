@@ -56,18 +56,20 @@ artifacts resulting from this analysis of these mutants was a collection of
 JUnit test suites that could be automatically re-run. Each of these JUnit test
 files follows a common pattern. For instance,
 `WordNet_HyperSQL_22w85_REDUNDANT.java` first creates, connects to, and
-configures a HyperSQL relational database management system. Moreover, it is
+configures a HyperSQL relational database management system. Since it is
 specifically concerned with analyzing a mutant for the `WordNet` schema that is
-a part of the experimental study. It also contains methods that return the
-unique mutant identifier for this specific mutant.
+a part of the experimental study it contains a `getSchemaName()` that returns
+this schema's name.
 
-Then, it contains a series of `INSERT` statements that add data to certain
-tables of the `WordNet` database. Since this specific mutant is redundant, it is
-illustrative to look at the `public void isRedundant() throws SQLException`
-mutant and study both the JUnit assertions and the experimenter's comments about
-why the mutant is redundant. Ultimately, you will see that this Java file
-contains the following source code comment containing the verdict of the manual
-analysis: `// ENTER END VERDICT (delete as appropriate): redundant`.
+It also contains methods that return the unique mutant identifier for this
+specific mutant. Additionally, it contains a series of `INSERT` statements that
+add data to certain tables of the `WordNet` database. Since this specific mutant
+is redundant, it is illustrative to look at the `public void isRedundant()
+throws SQLException` method and study both the JUnit assertions and the
+experimenter's comments about why the mutant is redundant. Ultimately, you will
+see that this Java file contains the following source code comment containing
+the verdict of the manual analysis: `// ENTER END VERDICT (delete as
+appropriate): redundant`.
 
 ## Additional Scripts and Data Files
 
