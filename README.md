@@ -78,9 +78,10 @@ computation, that we used to verify the results produced by the Ruby scripts.
 Additionally, the `r/graphics` directory contains the PDFs of graphs that we
 used to verify the results presented in the paper's tables. Ultimately, we
 determined that the tables furnished a more compact and useful representation of
-the data and thus we opted not to include them in the published paper. Finally,
-the `raw-data` directory contains all of the `.dat` files that contain the raw
-data resulting from running the experiments.
+the data and thus we opted not to include the graphs in the published paper.
+Finally, the `raw-data` directory contains all of the `.dat` files that contain
+the raw data resulting from running the experiments with the
+[SchemaAnalyst](https://github.com/schemaanalyst/schemaanalyst) tool.
 
 ## Problems or Praise
 
