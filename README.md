@@ -11,8 +11,13 @@ remainder of this documentation furnishes an overview of the key scripts.
 
 ## Details about the Ruby Scripts
 
-###_diff_mutants.rb
-Finds mutants in the "mutants" directory for one DBMS but not another
+These Ruby scripts were developed on MacOS, tested on Ubuntu 16.04, and run with
+the `ruby 2.3.1p112 (2016-04-26) [x86_64-linux-gnu]` version of Ruby. The script
+called `ruby/generate_all.rb` will automatically generate all of the data tables
+presented in the aforementioned research paper. Here are some more details about
+these scripts:
+
+- `_diff_mutants.rb`: Finds mutants in the "mutants" directory for one DBMS but not another
 
 ###_validate_files.rb
 Runs various validation scripts
