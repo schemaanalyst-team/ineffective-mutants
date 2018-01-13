@@ -5,8 +5,8 @@ Detection and Removal of Ineffective Mutants for the Mutation Analysis of
 Relational Database Schemas"*. If you would like to learn more about this paper,
 then please contact one or both of the paper's leader authors, [Phil
 McMinn](http://mcminn.io/) and [Gregory M.
-Kapfhammer](http://www.cs.allegheny.edu/sites/gkapfham/). When possible, the
-these authors will update this repository with additional details. For now, the
+Kapfhammer](http://www.cs.allegheny.edu/sites/gkapfham/). When possible, these
+authors will update this repository with additional details. For now, the
 remainder of this documentation furnishes an overview of the key scripts.
 
 ## Details about the Ruby Scripts
