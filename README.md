@@ -25,7 +25,7 @@ generate_all.rb`. Here are some more details about these scripts:
   checks.
 
 - `generate_mutant_totals_tables.rb`: Generates the produced, stillborn,
-  impaired, equivalent, and redundant mutant tables by schema and by operator
+  impaired, equivalent, and redundant mutant tables by schema and by operator.
 
 - `generate_stillborn_mutant_time_tables.rb`: Generates the table showing the
   time taken to detect stillborn mutants using the DBMS, using the DBMS with
@@ -41,7 +41,7 @@ generate_all.rb`. Here are some more details about these scripts:
 - `generate_mutant_type_by_schema_totals_table.rb`: Generates the table showing
   the total number of schemas with a particular type of mutant.
 
-- `generate_mutation_time_tables.rb`: Generates the mutation analysis time tables,
+- `generate_mutation_time_tables.rb`: Generates the mutation analysis time tables.
 
 - `generate_live_mutant_table.rb`: Generates the table showing the remaining
   live mutants by schema and operator.
