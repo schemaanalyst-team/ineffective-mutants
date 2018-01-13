@@ -1,14 +1,14 @@
-This repository contains replication materials for the paper 
+# Introduction
 
-*"Automatic Detection and Removal of Ineffective Mutants for the Mutation Analysis of Relational Database Schemas"*
+This repository contains replication materials for the paper *"Automatic
+Detection and Removal of Ineffective Mutants for the Mutation Analysis of
+Relational Database Schemas"*. If you would like to learn more about this paper,
+then please contact one or both of the paper's leader authors, [Phil
+McMinn](http://mcminn.io/) and [Gregory M.
+Kapfhammer](http://www.cs.allegheny.edu/sites/gkapfham/). When possible, the
+these authors will update this repository with additional details.
 
-More information will be made available following publication of the paper.
-
-In the meantime, contact:
-Phil McMinn: p.mcminn@sheffield.ac.uk
-Gregory Kapfhammer: gkapfham@allegheny.edu
-
-#Details on each script
+## Details about the Ruby Scripts
 
 ###_diff_mutants.rb
 Finds mutants in the "mutants" directory for one DBMS but not another
@@ -36,3 +36,11 @@ Generates the mutation time tables in the paper
 
 ###generate_live_mutant_table.rb
 Generates the table showing the remaining live mutants by schema and operator
+
+## Problems or Praise
+
+If you have any problems with replicating the experimental results in this
+paper, then please create an issue associated with this Git repository using the
+"Issues" link at the top of this site. The contributors to this replication
+package will do all that they can to resolve your issue and ensure that the
+all of the scripts in this analysis package work correctly.
