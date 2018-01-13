@@ -46,8 +46,26 @@ generate_all.rb`. Here are some more details about these scripts:
 - `generate_live_mutant_table.rb`: Generates the table showing the remaining
   live mutants by schema and operator.
 
-## Manually Generated Test Suites
+## Test Suites Supporting the Manual Analysis of Mutants
 
+One contribution of this paper's empirical study is a manual classification of
+mutants, so as to ensure that the automatic characterization was correct. The
+artifacts resulting from this analysis of these mutants was a collection of
+JUnit test suites that could be automatically re-run. Each of these JUnit test
+files follows a common pattern. For instance,
+`WordNet_HyperSQL_22w85_REDUNDANT.java` first creates, connects to, and
+configures a HyperSQL relational database management system. Moreover, it is
+specifically concerned with analyzing a mutant for the `WordNet` schema that is
+a part of the experimental study. It also contains methods that return the
+unique mutant identifier for this specific mutant.
+
+Then, it contains a series of `INSERT` statements that add data to certain
+tables of the `WordNet` database. Since this specific mutant is redundant, it is
+illustrative to look at the `public void isRedundant() throws SQLException`
+mutant and study both the JUnit assertions and the experimenter's comments about
+why the mutant is redundant. Ultimately, you will see that this Java file
+contains the following source code comment containing the verdict of the manual
+analysis: `// ENTER END VERDICT (delete as appropriate): redundant`.
 
 ## Additional Scripts and Data Files
 
