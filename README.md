@@ -18,13 +18,7 @@ the `ruby 2.3.1p112 (2016-04-26) [x86_64-linux-gnu]` version of Ruby. The script
 called `ruby/generate_all.rb` will automatically generate all of the data tables
 presented in the aforementioned research paper. For instance, you could run this
 script by typing the following command in your terminal window: `ruby
-generate_all.rb`. Here are some more details about these scripts:
-
-- `_diff_mutants.rb`: Finds mutants in the "mutants" directory for one DBMS but
-  not another.
-
-- `_validate_files.rb`: Runs the other scripts that perform various validation
-  checks.
+generate_all.rb`. Here are some more details about the most important scripts:
 
 - `generate_mutant_totals_tables.rb`: Generates the produced, stillborn,
   impaired, equivalent, and redundant mutant tables by schema and by operator.
@@ -47,6 +41,12 @@ generate_all.rb`. Here are some more details about these scripts:
 
 - `generate_live_mutant_table.rb`: Generates the table showing the remaining
   live mutants by schema and operator.
+
+- `_diff_mutants.rb`: Finds mutants in the "mutants" directory for one DBMS but
+  not another.
+
+- `_validate_files.rb`: Runs the other scripts that perform various validation
+  checks.
 
 ## Test Suites Supporting the Manual Analysis of Mutants
 
