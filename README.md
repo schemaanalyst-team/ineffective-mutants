@@ -3,11 +3,13 @@
 This repository contains replication materials for the paper *"Automatic
 Detection and Removal of Ineffective Mutants for the Mutation Analysis of
 Relational Database Schemas"*. If you would like to learn more about this paper,
-then please contact one or both of the paper's leader authors, [Phil
+then please contact one or both of the paper's lead authors, [Phil
 McMinn](http://mcminn.io/) and [Gregory M.
-Kapfhammer](http://www.cs.allegheny.edu/sites/gkapfham/). When possible, these
-authors will update this repository with additional details. For now, the
-remainder of this documentation furnishes an overview of the key scripts.
+Kapfhammer](http://www.cs.allegheny.edu/sites/gkapfham/). When possible and as
+needed, these lead authors will update this repository with additional details.
+For now, the remainder of this documentation furnishes an overview of the key
+scripts and the artifacts arising from a manual analysis completed by the
+paper's first author.
 
 ## Creating Data Tables with the Ruby Scripts
 
